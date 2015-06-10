@@ -1,0 +1,21 @@
+{
+    "name": "picturae/php-composition-utils",
+    "description": "A collection of utility classes for easier reflection use.",
+    "homepage": "https://github.com/picturae/php-composition-utils",
+    "authors": [
+        {
+            "name": "Boyan Bonev",
+            "email": "b.bonev@bluebuffstudio.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Picturae\\Utils\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
