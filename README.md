@@ -16,7 +16,7 @@ and some common design patterns.
 * Simple publish-subscribe pattern for a class via event triggering.
 
 
-## Useage
+## Usage
 --------------
 
 Add
