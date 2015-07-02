@@ -14,14 +14,14 @@ and some common design patterns.
   source.
 * Reflection constructor/setter/getters for protected properties.
 * Simple publish-subscribe pattern for a class via event triggering.
-
+* Trait for array transformations of objects(by convention) and introspection of fields metadata.
 
 ## Usage
 --------------
 
 Add
 
-`"picturae/php-composition-utils": "0.0.1"`
+`"picturae/php-composition-utils": "0.0.3"`
 
 to your composer.json file.
 
