@@ -17,6 +17,11 @@ trait WithArrayTransform
      */
     private $fieldsList = null;
 
+    /**
+     * Metadata extracted from the fields.
+     * @var array
+     **/
+    private $fieldsConfigList = null;
 
     /**
      * Fetch the array representation of the protected properties of an object.
@@ -66,5 +71,39 @@ trait WithArrayTransform
         }
 
         return $this->fieldsList;
+    }
+
+    /**
+     * Fetch the var metadata for a field and store it in the config.
+     * @return array
+     **/
+    public function getFieldsConfig()
+    {
+        if (null === $this->fieldsConfigList) {
+            $this->fieldsConfigList = [];
+
+            foreach ($this->getFields() as $field) {
+                $reflectionProperty = $this->getReflector()->getProperty($field);
+                $docBlock = $reflectionProperty->getDocComment();
+                preg_match('/@var\s([a-z]*).*/', $docBlock, $matches);
+
+                $this->fieldsConfigList[$field] = [
+                    'type' => isset($matches[1]) ? $matches[1] : null
+                ];
+            }
+
+        }
+
+        return $this->fieldsConfigList;
+    }
+
+    /**
+     * Fetch a field type according to var metadata.
+     * @param string $field
+     * @return string
+     **/
+    public function getFieldType($field)
+    {
+        return isset($this->getFieldsConfig()[$field]) ? $this->getFieldsConfig()[$field]['type'] : null;
     }
 }
